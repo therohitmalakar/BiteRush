@@ -1,6 +1,6 @@
 
 import {createBrowserRouter} from "react-router-dom"
-import Login from './pages/login'
+import Login from './pages/Login'
 import Signup from './pages/Signup'
 import { RouterProvider } from 'react-router'
 import Navbar from './components/Navbar'
