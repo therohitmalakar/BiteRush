@@ -62,7 +62,7 @@ function Login() {
       
     } catch (error) {
       console.error("login error",error.message)
-      alert("Something went wront");
+      alert("Something went wrong");
     }
   }
 
