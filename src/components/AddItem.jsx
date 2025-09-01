@@ -49,7 +49,7 @@ function AddItem({ onClose, isOpen }) {
     console.log(formData, foodData);
 
     try {
-      const res = await fetch("http://localhost:8080/user/addItem", {
+      const res = await fetch(`${import.meta.env.VITE_APP_URL}/user/addItem`, {
         method: "POST",
         body: formData,
         credentials: "include",

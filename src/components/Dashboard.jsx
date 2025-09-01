@@ -47,7 +47,7 @@ function Dashboard() {
       };
     });
 
-    const response = await fetch("http://localhost:8080/user/payment", {
+    const response = await fetch(`${import.meta.env.VITE_APP_URL}/user/payment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ function Dashboard() {
 
   //fetching items from the DB
   useEffect(() => {
-    fetch("http://localhost:8080/user/getItem")
+    fetch(`${import.meta.env.VITE_APP_URL}/user/getItem`)
       .then((res) => res.json())
       .then((data) => setItems(data))
       .catch((err) => console.error(err));
@@ -173,7 +173,7 @@ function Dashboard() {
                       <div className="flex aspect-[16/9] justify-center h-[30vh] overflow-hidden">
                         <img
                           className="h-full w-full object-cover  transition-transform duration-500 ease-in-out transform group-hover:scale-105 "
-                          src={`http://localhost:8080${item.imageUrl}`}
+                          src={`${import.meta.env.VITE_APP_URL}${item.imageUrl}`}
                           alt={item.name}
                         />
                       </div>
@@ -242,7 +242,7 @@ function Dashboard() {
                       <div className=" w-1/4 rounded-md overflow-hidden">
                         <img
                           className="h-[50%] w-full object-cover rounded-xl"
-                          src={`http://localhost:8080${product.imageUrl}`}
+                          src={`${import.meta.env.VITE_APP_URL}${product.imageUrl}`}
                           alt={product.name}
                         />
                       </div>

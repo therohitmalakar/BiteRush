@@ -12,7 +12,7 @@ export function CartProvider  ({children}) {
     useEffect(()=>{ 
         if(!user?._id) return;
 
-        fetch(`http://localhost:8080/user/${user._id}`)
+        fetch(`${import.meta.env.VITE_APP_URL}/user/${user._id}`)
         .then((res)=>{
             if(!res.ok) throw new Error("failed to fetch cart")
                 return res.json();
@@ -27,7 +27,7 @@ export function CartProvider  ({children}) {
         console.log("item id",itemId)
         if(!user?._id) return;
         try {
-            const res = await fetch(`http://localhost:8080/user/${user._id}`,{
+            const res = await fetch(`${import.meta.env.VITE_APP_URL}/user/${user._id}`,{
                 method: "POST",
                 headers: {"content-type": "application/json"},
                 body: JSON.stringify({itemId: itemId._id}),
@@ -45,7 +45,7 @@ export function CartProvider  ({children}) {
     const removeFromCart = async (itemId) =>{
         if(!user?._id) return;
         try {
-            const res = await fetch(`http://localhost:8080/user/${user._id}/${itemId}`,{
+            const res = await fetch(`${import.meta.env.VITE_APP_URL}/user/${user._id}/${itemId}`,{
                 method: "DELETE",
             })
             if(!res.ok) throw new Error("Failed to remove item");

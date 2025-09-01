@@ -8,7 +8,7 @@ export const AuthProvider = ({children}) => {
 
     const checkUser = async ()=>{
       try {
-        const res = await fetch("http://localhost:8080/user/me",{
+        const res = await fetch(`${import.meta.env.VITE_APP_URL}/user/me`,{
           method:"GET",
           credentials:"include"
         })
@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
 
   const logout = async () =>{
     try {
-      await fetch("http://localhost:8080/user/logout",{
+      await fetch(`${import.meta.env.VITE_APP_URL}/logout`,{
         method:"POST",
         credentials:"include"
       })

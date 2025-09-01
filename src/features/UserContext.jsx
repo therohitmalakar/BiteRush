@@ -12,7 +12,7 @@ export const UserProvider = ({children}) => {
     const fetchUser = async () =>{
      
       try {
-        const res = await fetch("http://localhost:8080/user/me",{
+        const res = await fetch(`${import.meta.env.VITE_APP_URL}/user/me`,{
           method: "GET",
           credentials:"include"
         }) 

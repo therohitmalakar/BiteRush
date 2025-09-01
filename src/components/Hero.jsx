@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 // import Sidebar from './Sidebar'
 import Dashboard from './Dashboard'
-import Cart from './Cart'
-import Favourite from './Favourite'
-import Navbar from './Navbar'
-
 
 function Hero() {
 

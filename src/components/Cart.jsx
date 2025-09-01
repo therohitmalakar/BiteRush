@@ -31,7 +31,7 @@ function Cart({ onClose, isOpen }) {
       
     })
 
-    const response = await fetch("http://localhost:8080/user/payment",{
+    const response = await fetch(`${import.meta.env.VITE_APP_URL}/user/payment`,{
       method:"POST",
       headers:{
         "Content-Type": "application/json"
@@ -88,7 +88,7 @@ function Cart({ onClose, isOpen }) {
                   <div className=" w-1/4  mb-12 aspect-[16/9] rounded-md overflow-hidden">
                     <img
                       className="h-full w-full object-cover rounded-xl"
-                      src={`http://localhost:8080${product.imageUrl}`}
+                      src={`${import.meta.env.VITE_APP_URL}${product.imageUrl}`}
                       alt={product.name}
                     />
                   </div>
