@@ -34,7 +34,7 @@ function Dashboard() {
 
   // Stripe Payment Integration starts here
   const makePayment = async () => {
-    console.log("make payment", cartItems[0].item);
+    
 
     const itemsWithQuant = cartItems.map((ci) => {
       const product = ci.item;
@@ -56,7 +56,6 @@ function Dashboard() {
     });
 
     const session = await response.json();
-    console.log("session from backend",session)
     await stripe.redirectToCheckout({ sessionId: session.id });
   };
   //Stripe Payment End
@@ -131,8 +130,6 @@ function Dashboard() {
     setShowCart(true)
   }
 
-  console.log("items", items);
-  console.log("itemsFilter", itemFilter);
 
   return (
     <div className="flex">

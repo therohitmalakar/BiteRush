@@ -19,9 +19,6 @@ function Navbar({onSelect}) {
   const {user} = useUser();
   const {cartItems} = useContext(CartContext);
 
-  
-  
-  
   return (
     
     <div className=' pt-3 pb-3 text-white bg-gradient-to-r from-[red] via-[#fe3232] to-[red] pl-6 pr-6 flex gap-2 sticky justify-between z-10' >

@@ -45,14 +45,11 @@ function Login() {
       })
 
       const data = await res.json();
-      console.log('here')
+      
       if(res.ok){
-        const token =data.token
-        localStorage.setItem('token',token)
         alert(data.message);
-        login(token);
+        login();
         setUser(data.user);
-        localStorage.setItem("user", JSON.stringify(data.user))
         navigate("/")
       }
       else{

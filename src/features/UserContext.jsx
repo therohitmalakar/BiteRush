@@ -10,27 +10,19 @@ export const UserProvider = ({children}) => {
     });
 
     const fetchUser = async () =>{
-      const token = localStorage.getItem("token");
-
-      if(!token){
-        return;
-      }
-
+     
       try {
-        const res = await fetch("http://localhost:8080/user/profile",{
+        const res = await fetch("http://localhost:8080/user/me",{
           method: "GET",
-          headers: {
-            "Authorization":`Bearer ${token}`,
-          },
+          credentials:"include"
         }) 
 
         const data = await res.json();
         if(res.ok){
           setUser(data.user);
-          localStorage.setItem("user", JSON.stringify(data.user));
         }else{
           console.error(data.message);
-          
+          setUser(null)
         }
       } catch (error) {
         console.error("Error fetching user:",error);
