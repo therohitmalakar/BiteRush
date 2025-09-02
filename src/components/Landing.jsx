@@ -4,6 +4,7 @@ import burger from "../assets/burger.webp"
 import { Button } from './ui/button'
 import { useNavigate } from 'react-router-dom'
 import Loader from '@/pages/Loader'
+import Footer from './Footer'
 
 function Landing() {
   const navigate = useNavigate();

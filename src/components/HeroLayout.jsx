@@ -5,8 +5,8 @@ function HeroLayout() {
     const [selectedSection, setSelectedSection] = useState("Dashboard")
   return (
     <div>
-      
       <Hero selectedSection={selectedSection } onSelect={setSelectedSection} />
+     
     </div>
   )
 }

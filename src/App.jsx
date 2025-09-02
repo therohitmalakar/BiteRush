@@ -10,6 +10,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import Failed from './pages/Failed'
 import Success from './pages/Success'
 import Landing from "./components/Landing"
+import Footer from "./components/Footer"
 
 const appRouter = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const appRouter = createBrowserRouter([
     element:<>
     <Navbar/>
     <Landing/>
+    
     {/* <Hero/> */}
     </>,
   },

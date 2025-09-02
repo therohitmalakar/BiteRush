@@ -37,7 +37,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-        const res = await fetch("http://localhost:8080/user/signup",{
+        const res = await fetch(`${import.meta.env.VITE_APP_URL}/user/signup`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

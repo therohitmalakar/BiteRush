@@ -31,17 +31,7 @@ function Navbar({onSelect}) {
           user?.role  === "admin" && isLoggedIn &&
            <IoFastFoodSharp  onClick={()=> setAddItem(true)} className='cursor-pointer ' />
         }
-        <div className='flex' >
-
-        <h1  className=' cart cursor-pointer ' ><CiShoppingCart onClick={()=> setCart(true)} />
-        <Cart className="relative" isOpen={cart} onClose={()=> setCart(false)} />
-        </h1>
-
-        <div className= ' absolute top-3.5 right-40   bg-black p-1 rounded-full items-center justify-center w-4 h-4 flex' >
-          <p className='object-contain text-[10px] text-white font-bold' >{cartItems.length}</p>
-        </div>
-        
-        </div>
+       
         <h1 className=' contact cursor-pointer  '><CiPhone /></h1>
         
 

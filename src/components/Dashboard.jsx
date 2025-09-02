@@ -13,6 +13,7 @@ import { LuDessert } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
 import { useStripe } from "@stripe/react-stripe-js";
 import {motion, AnimatePresence} from "motion/react"
+import Footer from "./Footer";
 
 function Dashboard() {
   //Stripe
@@ -132,8 +133,20 @@ function Dashboard() {
 
 
   return (
-    <div className="flex">
-      <motion.div  className="h-screen w-full pl-10 pr-10 mt-12 ">
+    <>
+    <div className="flex ">
+      
+      <motion.div  className="h-screen w-full pl-10 pr-10 mt-6 ">
+        {
+          !showCart && 
+          <div  className=' cart cursor-pointer relative pb-4' >
+          <CiShoppingCart className="absolute right-2 text-xl" onClick={()=>setShowCart(true)} />
+          <div className= ' absolute -top-1 right-0 bg-black p-1 rounded-full items-center justify-center w-4 h-4 flex' >
+          <p className='object-contain text-[10px] text-white font-bold' >{cartItems.length}</p>
+        </div>
+        </div>
+        }
+        
         <div className="category mt-4 gap-4 grid grid-cols-7 ">
           {categoryName.map((item, index) => (
             <Card
@@ -315,6 +328,8 @@ function Dashboard() {
       )}
       </AnimatePresence>
     </div>
+    
+    </>
   );
 }
 
