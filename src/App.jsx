@@ -10,7 +10,8 @@ import { Elements } from '@stripe/react-stripe-js'
 import Failed from './pages/Failed'
 import Success from './pages/Success'
 import Landing from "./components/Landing"
-import Footer from "./components/Footer"
+import Bill from "./pages/Bill"
+import AdminRoutes from "./features/AdminRoutes"
 
 const appRouter = createBrowserRouter([
   {
@@ -18,8 +19,6 @@ const appRouter = createBrowserRouter([
     element:<>
     <Navbar/>
     <Landing/>
-    
-    {/* <Hero/> */}
     </>,
   },
   {
@@ -30,7 +29,8 @@ const appRouter = createBrowserRouter([
   },
   {
     path:"/login",
-    element:<Login/>
+    element:
+    <Login/>
   },
   {
     path:"/signup",
@@ -43,6 +43,15 @@ const appRouter = createBrowserRouter([
   {
     path:"/success",
     element:<Success/>
+  },
+  {
+    path:"/dashboard",
+    element:
+    <AdminRoutes>
+    <Navbar/>
+    <Bill/>
+    </AdminRoutes>
+
   }
 
 ])

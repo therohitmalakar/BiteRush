@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Card,
   CardAction,
@@ -11,11 +11,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useUser } from "@/features/UserContext";
 
 function Success() {
     const navigate = useNavigate()
     const [params] = useSearchParams();
     const [bill, setBill] = useState(null)
+    const {user} = useUser();
 
     useEffect(()=>{
       const sessionId = params.get("session_id");
@@ -25,6 +27,29 @@ function Success() {
         .then(data => setBill(data));
       }
     },[])
+
+    useEffect(()=>{
+       const sessionId = params.get("session_id");
+       
+       if(sessionId && user?._id){
+        fetch(`${import.meta.env.VITE_APP_URL}/user/save-bill`,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({session_id: sessionId, userId: user._id}),
+           })
+          .then(res=> res.json())
+          .then((data)=>{
+            if(data.success){
+              console.log("Bill saved",data.bill)
+            }else{
+              console.error("error saving bill",data.message)
+            }
+          })
+          .catch(err=> console.error("request failed",err))
+       
+       }
+    },[params,user])
+
   return (
     <div className="flex justify-center items-center h-screen">
       <Card className="w-[50vh]">

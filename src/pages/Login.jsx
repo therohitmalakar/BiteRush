@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext} from '@/features/AuthContext'
 import { useUser } from '@/features/UserContext'
+import { toast, Toaster } from 'sonner'
 
 function Login() {
 
@@ -47,19 +48,18 @@ function Login() {
       const data = await res.json();
       
       if(res.ok){
-        alert(data.message);
         login();
         setUser(data.user);
         navigate("/")
       }
       else{
         console.error("login failed",data.message)
-        alert(data.message);
+        toast.error(data.message)
       }
       
     } catch (error) {
       console.error("login error",error.message)
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     }
   }
 
@@ -67,6 +67,7 @@ function Login() {
 
   return (
     <div className='flex justify-center items-center h-screen ' >
+      <Toaster richColors position='top-center' />
       <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Login to your account</CardTitle>

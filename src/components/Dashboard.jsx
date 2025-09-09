@@ -13,7 +13,7 @@ import { LuDessert } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
 import { useStripe } from "@stripe/react-stripe-js";
 import {motion, AnimatePresence} from "motion/react"
-import Footer from "./Footer";
+import { toast, Toaster } from "sonner";
 
 function Dashboard() {
   //Stripe
@@ -129,14 +129,17 @@ function Dashboard() {
   const handleAddToCart = (item) =>{
     addToCart(item);
     setShowCart(true)
+    toast.success("Item added to cart")
   }
 
 
   return (
     <>
     <div className="flex ">
+      <Toaster richColors position="top-center" />
       
-      <motion.div  className="h-screen w-full pl-10 pr-10 mt-6 ">
+      <motion.div  className="h-screen w-full pl-10 pr-10 mt-10 ">
+        
         {
           !showCart && 
           <div  className=' cart cursor-pointer relative pb-4' >

@@ -4,12 +4,11 @@ import { Button } from './ui/button'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '@/features/AuthContext';
 import { IoFastFoodSharp } from "react-icons/io5";
-import { CiShoppingCart } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
 import { useUser } from '@/features/UserContext';
 import AddItem from './AddItem';
-import Cart from './Cart';
 import { CartContext } from '@/features/CartContext';
+import { TbScript } from 'react-icons/tb';
 
 function Navbar({onSelect}) {
   const [addItem, setAddItem] = useState(false);
@@ -18,6 +17,8 @@ function Navbar({onSelect}) {
   const {isLoggedIn, logout} = useContext(AuthContext);
   const {user} = useUser();
   const {cartItems} = useContext(CartContext);
+
+  
 
   return (
     
@@ -28,8 +29,11 @@ function Navbar({onSelect}) {
       <div className="items flex gap-6  text-xl items-center ">
         
         {
-          user?.role  === "admin" && isLoggedIn &&
+          user?.role  === "admin" && isLoggedIn && 
+          <div className='flex gap-5 items-center' >
            <IoFastFoodSharp  onClick={()=> setAddItem(true)} className='cursor-pointer ' />
+           <TbScript onClick={()=> navigate("/dashboard") } className='cursor-pointer' />
+           </div>  
         }
        
         <h1 className=' contact cursor-pointer  '><CiPhone /></h1>

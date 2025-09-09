@@ -5,6 +5,7 @@ import { Button } from './ui/button'
 import { useNavigate } from 'react-router-dom'
 import Loader from '@/pages/Loader'
 import Footer from './Footer'
+import { Toaster } from 'sonner'
 
 function Landing() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Landing() {
         },
         show:{
             clipPath:"polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-            display:"none",
+            opacity:0,
             transition:{
                 delay:0.5,
                 duration:0.9,
@@ -26,9 +27,12 @@ function Landing() {
   return (
     <>
     {/* <Loader/> */}
-    <motion.div className='bg-[#eaeaea] absolute inset-0 z-20 mix-blend-exclusion ' variants={containerUp} initial="hidden" animate="show" ></motion.div>
-    <div className='h-screen bg-gradient-to-r from-[red]   via-[#fe3232] to-[red] z-20 ' >
+    <Toaster richColors  />
+    <motion.div className='bg-[#eaeaea] absolute inset-0 z-20 mix-blend-exclusion pointer-events-none ' variants={containerUp} initial="hidden" animate="show" ></motion.div>
+    <div className='min-h-screen bg-gradient-to-r from-[red]   via-[#fe3232] to-[red] z-20 ' >
+      
       <div className='h-[70vh] relative flex justify-center' >
+        
         <h1 className='font-gasoek absolute top-10 text-[45vh] text-white tracking-wide ' >BURGER</h1>
         <img className='absolute h-[75vh] -top-10 z-30  drop-shadow-2xl shadow-black transform transition-transform duration-300
          hover:scale-101 ' src={burger} alt="burger" />

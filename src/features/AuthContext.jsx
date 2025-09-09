@@ -1,5 +1,6 @@
 
 import { createContext, useEffect, useState } from "react";
+import { toast, Toaster } from "sonner";
 
 export const AuthContext = createContext();
 
@@ -29,8 +30,9 @@ export const AuthProvider = ({children}) => {
   },[])
 
   const login = async () =>{
-    
     setIsLoggedIn(true);
+    toast.success("logged in successfully")
+
   }
 
   const logout = async () =>{
@@ -39,7 +41,6 @@ export const AuthProvider = ({children}) => {
         method:"POST",
         credentials:"include"
       })
-     
         setIsLoggedIn(false)
     } catch (error) {
       console.log("Logout failed:",error)
